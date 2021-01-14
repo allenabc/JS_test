@@ -84,15 +84,13 @@ function decodeDateString(dateString) {
 function checkMonthValue(day, month) {
 
   if (day < 1 || day > 31)       {
-    msg = `Day ${day} must be between 1 and 31.`
-    console.log(msg)
+    // `Day ${day} must be between 1 and 31.`
     return false
   }
 
   if (month < 1 || month > 12) {
     // check month range
-    msg = `Month ${month} must be between 1 and 12.`
-    console.log(msg)
+    //`Month ${month} must be between 1 and 12.`
     return false
   }
 

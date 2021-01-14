@@ -3,29 +3,7 @@ var expect = require('chai').expect
 var should = require('chai').should()
 const vb = require('../validBirthday');
 
-var day
-var month
-describe('checkMonthValue checks if day is 1-31 and month is 1-12', function() {
-
-day=1
-month=1
-  it(`checka if day ${day} is valid for a month ${month}`,function()  {
-    assert.strictEqual(vb.checkMonthValue(day,month),true,`Doesnt work with day as ${day} or month as ${month} `)
-  })
-
-day=31
-month=1
-  it(`checkb if day ${day} is valid for a month ${month}`,function() {
-    assert.strictEqual(vb.checkMonthValue(day,month),true,`Doesnt work with day as ${day} or month as ${month} `)
-  })
-
-day=1
-month=12
-  it(`checkc if day ${day} is valid for a month ${month}`,function()  {
-    assert.strictEqual(vb.checkMonthValue(day,month),true,`Doesnt work with day as ${day} or month as ${month} `)
-  })
-
-
+/*
 db.get(1234, function (err, doc) {
   // we expect error to not exist
   // we expect doc to exist and be an object
