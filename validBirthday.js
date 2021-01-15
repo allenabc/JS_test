@@ -1,10 +1,9 @@
 exports.getAge = getAge
 exports.generationCheck = generationCheck
+exports.decodeDateString = decodeDateString
 exports.isValidDate = isValidDate
 exports.isValidDate = isValidDate
-exports.februaryLeapyearCheck = februaryLeapyearCheck
-exports.checkMonthValue = checkMonthValue
-exports.checkMonthValue = checkMonthValue
+exports.leapYearCheck = leapYearCheck
 exports.checkMonthValue = checkMonthValue
 
 function getAge(birth) {
@@ -62,14 +61,8 @@ function isValidDate(month) {
   }
 }
 
-function februaryLeapyearCheck(day, year) {
-  var isleap = year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
-  if (day > 29 || (day == 29 && !isleap)) {
-    msg = 'February ' + year + " doesn't have " + day + ' days!'
-    console.log(msg)
-    return undefined
-  }
-  return true
+function leapYearCheck(year) {
+  return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
 }
 
 function decodeDateString(dateString) {
@@ -78,7 +71,7 @@ function decodeDateString(dateString) {
   if (decode) {
     return { month: decode[1], day: decode[3], year: decode[4] }
   }
-  return decode
+  return false
 }
 
 function checkMonthValue(day, month) {
