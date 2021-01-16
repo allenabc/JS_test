@@ -4,7 +4,7 @@ const vb = require('../validBirthday')
 //checkMonthValue()
 //generationCheck()
 //leapYearCheck()
-decodeDateString()
+decodeDateStringTest()
 
 
 function checkMonthValue() {
@@ -139,16 +139,33 @@ function leapYearCheck() {
     })
 }
 
-function decodeDateString (){
-	var dateString='07/12/1949'
-	dateString='07-12-1949'
-	describe('Testing decode', function () {
-            it(`${dateString} to decode `, function () {
-                dateObj=vb.decodeDateString(dateString)
-		let day=dateObj.day
-		let month=dateObj.month
-		let year=dateObj.year
-                assert.equal(day,12,'should match day')
-                assert.equal(month,07,'should match month')
-                assert.equal(year,year,'should match year')
-	    })})}
+function decodeDateStringTest() {
+    describe('decode date string ', function () {
+        var dateString = '06-12-1960'
+        it(`trying to decode ${dateString}`, function () {
+            let dateObj = vb.decodeDateString(dateString)
+            console.log("kkk"+dataObj)
+            //assert.isTrue(dateObj, `can not decode ${dateString}`)
+            let day = dateObj.day
+            let month = dateObj.month
+            let year = dateObj.year
+            console.log(dateObj)
+            assert.equal(month, 06, 'should match month')
+            assert.equal(day, 12, 'should match day')
+            assert.equal(year, 1960, 'should match year')
+        })
+
+        dateString = '07/07/2000'
+        it(`${dateString} to decode `, function () {
+            dateObj = vb.decodeDateString(dateString)
+            assert.isTrue(dateObj, `can not decode ${dateString}`)
+            let month = dateObj.month
+            let day = dateObj.day
+            let year = dateObj.year
+            assert.equal(day, 05, 'should match day')
+            assert.equal(month, 15, 'should match month')
+            assert.equal(year, 00, 'should match year')
+        })
+    }
+    )
+}

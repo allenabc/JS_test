@@ -2,7 +2,6 @@ exports.getAge = getAge
 exports.generationCheck = generationCheck
 exports.decodeDateString = decodeDateString
 exports.isValidDate = isValidDate
-exports.isValidDate = isValidDate
 exports.leapYearCheck = leapYearCheck
 exports.checkMonthValue = checkMonthValue
 
@@ -68,8 +67,11 @@ function leapYearCheck(year) {
 function decodeDateString(dateString) {
   var matchDate = /^(\d{1,2})(\/|-)(\d{1,2})\2(\d{4})$/
   var decode = dateString.match(matchDate)
+  console.log(decode)
   if (decode) {
-    return { month: decode[1], day: decode[3], year: decode[4] }
+    obj1 = { month: decode[1], day: decode[3], year: decode[4] }
+    console.log(obj1)
+    return obj1
   }
   return false
 }
