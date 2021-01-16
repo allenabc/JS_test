@@ -1,9 +1,9 @@
 exports.getAge = getAge
 exports.generationCheck = generationCheck
-exports.decodeDateString = decodeDateString
-exports.isValidDate = isValidDate
 exports.leapYearCheck = leapYearCheck
-exports.checkMonthValue = checkMonthValue
+exports.decodeDateString = decodeDateString
+exports.checkMonthDay = checkMonthDay
+exports.longMonth = longMonth
 
 function getAge(birth) {
   var today = new Date()
@@ -11,7 +11,9 @@ function getAge(birth) {
   var nowmonth = today.getMonth()
   var nowday = today.getDate()
 
-  var birthyear = birth.getFullYear()
+  //var birthyear = birth.getFullYear()
+  by=new Date(1949,07,12)
+  return by.getFullYear()
   var birthmonth = birth.getMonth()
   var birthday = birth.getDate()
 
@@ -24,6 +26,8 @@ function getAge(birth) {
   }
   alert(age)
 
+}
+function ageEighteen() {
   if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
   } else {
     alert('You have crossed your 18th birthday !')
@@ -53,13 +57,6 @@ function generationCheck(year) {
   }
 }
 
-function isValidDate(month) {
-  if ((month == 4 || month == 6 || month == 9 || month == 11) && day == 31) {
-    msg = 'Month ' + month + " doesn't have 31 days!"
-    return msg
-  }
-}
-
 function leapYearCheck(year) {
   return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
 }
@@ -67,18 +64,15 @@ function leapYearCheck(year) {
 function decodeDateString(dateString) {
   var matchDate = /^(\d{1,2})(\/|-)(\d{1,2})\2(\d{4})$/
   var decode = dateString.match(matchDate)
-  console.log(decode)
   if (decode) {
-    obj1 = { month: decode[1], day: decode[3], year: decode[4] }
-    console.log(obj1)
-    return obj1
+    return { month: decode[1], day: decode[3], year: decode[4] }
   }
   return false
 }
 
-function checkMonthValue(day, month) {
+function checkMonthDay(day, month) {
 
-  if (day < 1 || day > 31)       {
+  if (day < 1 || day > 31) {
     // `Day ${day} must be between 1 and 31.`
     return false
   }
@@ -92,37 +86,19 @@ function checkMonthValue(day, month) {
   return true
 }
 
-//testDecode()
-var result
-function fnext(dateString) {
-  result = decodeDateString(dateString)
-  if (result) {
+function longMonth(month) {
+  if (month < 1 || month > 12) { return undefined }
+
+  if (month == 1 || month == 3 || month == 5
+    || month == 7 || month == 8 || month == 10 || month == 12) {
+    return true
   }
+  // long month is true
+  // otherwise false
+  return false
 }
-
-var myDate = '13/14/1924'
-
-const getName = () => {
-  return 'Jim'
-}
-
-//testGenerations()
-
-//result=decodeDateString(myDate)
-
-//console.log(result)
-//var t = checkMonthValue(result.day,result.month)
-//console.log(t)
-//var status
-//if(result.month === 2) { status=februaryLeapyearCheck(result.day,result.year) }
 
 //  user claims his birthday is on a certain data
 //  after checking the data find his age
 //  find if person is millenial, baby boomer, genY
-//
-//  Gen Z 1996 plus
-//  Millennial 1977-1995
-//  Gen X 1965-1976
-//  BB 1946-1964
-//  Silent Gen < 1945
 //
