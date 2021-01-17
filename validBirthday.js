@@ -1,3 +1,7 @@
+exports.enterName = enterName
+exports.enterBirthy = enterBirthday
+exports.getFirstName = getFirstName
+exports.getLastName = getLastName
 exports.getAge = getAge
 exports.generationCheck = generationCheck
 exports.leapYearCheck = leapYearCheck
@@ -5,15 +9,37 @@ exports.decodeDateString = decodeDateString
 exports.checkMonthDay = checkMonthDay
 exports.longMonth = longMonth
 
+var firstName
+var lastName
+var birthday
+
+function enterName(first, last) {
+  firstName = first
+  lastName = last
+}
+
+function enterBirthday(bday) {
+  birthday = bday
+}
+
+function getFirstName() {
+  return firstName
+}
+
+function getLastName() {
+  return firstName
+}
+
 function getAge(birth) {
+  x = new Date(birth)
+  return x.getFullYear()
   var today = new Date()
   var nowyear = today.getFullYear()
   var nowmonth = today.getMonth()
   var nowday = today.getDate()
 
-  //var birthyear = birth.getFullYear()
-  by=new Date(1949,07,12)
-  return by.getFullYear()
+// https://momentjs.com/
+
   var birthmonth = birth.getMonth()
   var birthday = birth.getDate()
 
@@ -25,7 +51,6 @@ function getAge(birth) {
     age = parseInt(age) - 1
   }
   alert(age)
-
 }
 function ageEighteen() {
   if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
