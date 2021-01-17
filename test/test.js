@@ -1,10 +1,10 @@
 const assert = require('chai').assert
 const vb = require('../validBirthday')
 
-main()
+scenario()
+var birthday = '07/21/2000'
 
 function main() {
-    enterNameTest()
     getAge()
     checkMonthDay()
     generationCheck()
@@ -12,26 +12,33 @@ function main() {
     decodeDateStringTest()
     shortLongTest()
 }
-
-function enterNameTest() {
-    var first = 'Allen'
-    var last = 'Parsons'
-    vb.enterName(first, last)
+function scenario() {
+    setNameTest()
+    setBirthday(birthday)
+}
+function setNameTest() {
+    var first = 'John'
+    var last = 'Brown'
+    vb.setName(first, last)
     describe('Testing name', function () {
-        it('match firstname', function () {
-            var result = vb.enterName(first, last)
-        })
-
         it('check firstName', function () {
             var result = vb.getFirstName()
-            assert.match(first, /Allen/, 'first name')
+            assert.match(first, /John/, 'first name')
         })
         it('check lastName', function () {
             var result = vb.getLastName()
-            assert.match(last, /Parsons/, 'last name')
+            assert.match(last, /Brown/, 'last name')
         })
 
     })
+}
+function setBirthday(date){
+	vb.setBirthday(date)
+	console.log(">>${vb.getBirthday()'
+        it('check birthday', function () {
+            var result = vb.getBirthday()
+            assert.equal(result, '07/21/2000', 'checking date')
+        })
 }
 function getAge() {
     birthday = '01/01/2000'

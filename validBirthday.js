@@ -1,5 +1,6 @@
-exports.enterName = enterName
-exports.enterBirthy = enterBirthday
+exports.setName = setName
+exports.setBirthday = setBirthday
+exports.getBirthday = getBirthday
 exports.getFirstName = getFirstName
 exports.getLastName = getLastName
 exports.getAge = getAge
@@ -13,13 +14,9 @@ var firstName
 var lastName
 var birthday
 
-function enterName(first, last) {
+function setName(first, last) {
   firstName = first
   lastName = last
-}
-
-function enterBirthday(bday) {
-  birthday = bday
 }
 
 function getFirstName() {
@@ -28,6 +25,14 @@ function getFirstName() {
 
 function getLastName() {
   return firstName
+}
+
+function setBirthday(bday) {
+  birthday = bday
+}
+
+function getBirthday() {
+  return birthday
 }
 
 function getAge(birth) {
