@@ -1,24 +1,36 @@
 const assert = require('chai').assert
 const vb = require('../validBirthday')
 
-scenario()
-var birthday = '07/21/2000'
+var first = 'John'
+var last = 'Brown'
+var age
+var birthday = '07/21/1995'
+//scenario()
+//main()
+//setBirthdayTest()
+//getBirthyearTest()
+retall()
+
+function retall() {
+    scenario()
+    let a = vb.myObj()
+    console.log(a)
+}
 
 function main() {
     getAge()
     checkMonthDay()
     generationCheck()
     leapYearCheck()
-    decodeDateStringTest()
     shortLongTest()
 }
 function scenario() {
-    setNameTest()
-    setBirthday(birthday)
+    // set name and birthday
+    vb.setAge(birthday)
+    vb.setFullname(first, last)
+    vb.setGeneration(vb.getBirthyear())
 }
 function setNameTest() {
-    var first = 'John'
-    var last = 'Brown'
     vb.setName(first, last)
     describe('Testing name', function () {
         it('check firstName', function () {
@@ -32,17 +44,23 @@ function setNameTest() {
 
     })
 }
-function setBirthday(date){
-	vb.setBirthday(date)
-	console.log(">>${vb.getBirthday()'
-        it('check birthday', function () {
-            var result = vb.getBirthday()
-            assert.equal(result, '07/21/2000', 'checking date')
+function setBirthdayTest() {
+    vb.setAge(birthday)
+    describe('calculate age from birthday', function () {
+        it('calculate birthday', function () {
+            age = vb.getAge()
+            assert.equal(age, 25, 'checking age')
         })
+    })
 }
-function getAge() {
-    birthday = '01/01/2000'
-    result = vb.getAge(birthday)
+
+function getBirthyearTest() {
+    setBirthdayTest()
+    console.log(vb.getBirthyear())
+}
+
+function getAgeTest() {
+    age = vb.setAge(birthday)
     describe('getAge ', function () {
         it('check year', function () {
             var result = vb.getAge(birthday)
@@ -52,48 +70,51 @@ function getAge() {
 }
 function checkMonthDay() {
     // npm test
-    var month = 6
+    var month = '06'
+
     describe('Testing day value in checkMonthDay', function () {
         it('enter zero for day should fail', function () {
-            var result = vb.checkMonthDay(0, month)
+            var result = vb.checkMonthDay(month, 0)
             assert.isFalse(result, 'daily')
         })
 
         it('enter 32 for day should fail', function () {
-            var result = vb.checkMonthDay(32, month)
+            var result = vb.checkMonthDay(month, 32)
             assert.isFalse(result, 'daily')
         })
 
+
         it('enter one for day should pass', function () {
-            var result = vb.checkMonthDay(1, month)
+            var result = vb.checkMonthDay(month, 1)
             assert.isTrue(result, 'daily')
         })
 
         it('enter 31 for day should pass', function () {
-            var result = vb.checkMonthDay(31, month)
+            var result = vb.checkMonthDay(month, 31)
             assert.isTrue(result, 'daily')
         })
+
     })
 
     var day = 14
     describe('Testing month value in checkMonthDay', function () {
         it('enter zero for month should fail', function () {
-            var result = vb.checkMonthDay(day, 0)
+            var result = vb.checkMonthDay(0, day)
             assert.isFalse(result, 'daily')
         })
 
         it('enter 13 for month should fail', function () {
-            var result = vb.checkMonthDay(day, 13)
+            var result = vb.checkMonthDay(13, 20)
             assert.isFalse(result, 'daily')
         })
 
         it('enter one for month should pass', function () {
-            var result = vb.checkMonthDay(day, 1)
+            var result = vb.checkMonthDay(1, 1)
             assert.isTrue(result, 'daily')
         })
 
         it('enter 12 for month should pass', function () {
-            var result = vb.checkMonthDay(day, 12)
+            var result = vb.checkMonthDay(12, 12)
             assert.isTrue(result, 'daily')
         })
     })
@@ -178,32 +199,6 @@ function leapYearCheck() {
         }
         )
     })
-}
-function decodeDateStringTest() {
-    describe('Decode date string ', function () {
-        it(`validate date `, function () {
-            var dateString = '06-12-1960'
-            let Obj = vb.decodeDateString(dateString)
-            assert.equal(Obj.month, 06, 'should match month')
-            assert.equal(Obj.day, 12, 'should match day')
-            assert.equal(Obj.year, 1960, 'should match year')
-        })
-        it(`validate date`, function () {
-            var dateString = '07/08/2000'
-            let Obj = vb.decodeDateString(dateString)
-            assert.equal(Obj.month, 07, 'should match day')
-            assert.equal(Obj.day, 08, 'should match month')
-            assert.equal(Obj.year, 2000, 'should match year')
-        })
-        it(`validate date`, function () {
-            var dateString = '01/12/1950'
-            let Obj = vb.decodeDateString(dateString)
-            assert.equal(Obj.month, 01, 'should match day')
-            assert.equal(Obj.day, 12, 'should match month')
-            assert.equal(Obj.year, 1950, 'should match year')
-        })
-    }
-    )
 }
 function shortLongTest() {
     describe('Long month ', function () {
