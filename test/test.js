@@ -9,7 +9,7 @@ var birthday = '07/21/1995'
 //main()
 //setBirthdayTest()
 //getBirthyearTest()
-retall()
+generationCheck()
 
 function retall() {
     scenario()
@@ -71,7 +71,6 @@ function getAgeTest() {
 function checkMonthDay() {
     // npm test
     var month = '06'
-
     describe('Testing day value in checkMonthDay', function () {
         it('enter zero for day should fail', function () {
             var result = vb.checkMonthDay(month, 0)
@@ -124,65 +123,70 @@ function generationCheck() {
         var generation = 'Silent Generation'
         var year = 1930
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
+            console.log(`>>> ${result}`)
             assert.equal(result, generation, `expecting ${generation}`)
         })
         var generation = 'Silent Generation'
         var year = 1944
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
             assert.equal(result, generation, `expecting ${generation}`)
         })
         var generation = 'Baby Boomer'
         var year = 1945
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
             assert.equal(result, generation, `expecting ${generation}`)
         })
         var generation = 'Baby Boomer'
         var year = 1964
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
             assert.equal(result, generation, `expecting ${generation}`)
         })
         var generation = 'Generation X'
         var year = 1965
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
             assert.equal(result, generation, `expecting ${generation}`)
         })
         var generation = 'Generation X'
         var year = 1976
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
             assert.equal(result, generation, `expecting ${generation}`)
         })
         var generation = 'Millenial'
         var year = 1977
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
             assert.equal(result, generation, `expecting ${generation}`)
         })
         var generation = 'Millenial'
         var year = 1995
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
             assert.equal(result, generation, `expecting ${generation}`)
         })
         var generation = 'Generation Z'
         var year = 1996
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
             assert.equal(result, generation, `expecting ${generation}`)
         })
         var generation = 'Generation Z'
         var year = 2020
         it(`Year ${year} should should return ${generation}`, function () {
-            var result = vb.generationCheck(year)
+            var result = vb.setGeneration(year)
             assert.equal(result, generation, `expecting ${generation}`)
         })
-    })// scribe
+
+    })
+
 }
+
+function done() { }
 function leapYearCheck() {
     leaps = [1904, 1956, 1960, 1992, 2000, 2016, 2020]
     nonLeaps = [1953, 1991, 1995, 2001, 2015]

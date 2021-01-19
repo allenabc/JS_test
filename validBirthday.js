@@ -70,22 +70,27 @@ function setGeneration(year) {
   //  Silent Gen < 1945
   if (year <= 1945) {
     generation = 'Silent Generation'
+    return generation
   }
   //  BB 1946-1964
   else if (year <= 1964) {
     generation = 'Baby Boomer'
+    return generation
   }
   //  Gen X 1965-1976
   else if (year <= 1976) {
     generation = 'Generation X'
+    return generation
   }
   //  Millennial 1977-1995
   else if (year <= 1995) {
     generation = 'Millenial'
+    return generation
   }
   //  Gen Z 1996 plus
   else {
     generation = 'Generation Z'
+    return generation
   }
 }
 
